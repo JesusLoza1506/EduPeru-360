@@ -28,6 +28,25 @@
                     </div>
 
                     <div class="card-body p-4 p-md-5">
+                        <!-- Mensajes de éxito o error -->
+                        @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show mb-4 animate__animated animate__fadeInDown" role="alert">
+                            <i class="bi bi-check-circle me-2"></i> {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                        </div>
+                        @endif
+                        @if(session('error'))
+                        <div class="alert alert-danger alert-dismissible fade show mb-4 animate__animated animate__shakeX" role="alert">
+                            <i class="bi bi-exclamation-triangle me-2"></i> {{ session('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                        </div>
+                        @endif
+                        @if($errors->any())
+                        <div class="alert alert-danger alert-dismissible fade show mb-4 animate__animated animate__shakeX" role="alert">
+                            <i class="bi bi-exclamation-triangle me-2"></i> {{ $errors->first() }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                        </div>
+                        @endif
                         <form method="POST" action="/login/estudiantes">
                             @csrf
                             <div class="mb-4">
