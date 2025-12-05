@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 
@@ -67,5 +67,14 @@ Route::get('/login/administracion', function () {
     } catch (Exception $e) {
         Log::error('Error al cargar login_administracion: ' . $e->getMessage());
         return response()->view('errors.500', ['mensaje' => $e->getMessage()], 500);
+    }
+});
+
+Route::get('/db-test', function () {
+    try {
+        DB::connection()->getPdo();
+        return '¡Conexión exitosa a la base de datos!';
+    } catch (\Exception $e) {
+        return 'Error de conexión: ' . $e->getMessage();
     }
 });
