@@ -11,7 +11,7 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link fw-semibold" href="#">Home</a></li>
                 <li class="nav-item"><a class="nav-link fw-semibold" href="#">Nosotros</a></li>
-                <li class="nav-item"><a class="nav-link fw-semibold" href="#">Contacto</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="#">Contactos</a></li>
             </ul>
         </div>
     </nav>
