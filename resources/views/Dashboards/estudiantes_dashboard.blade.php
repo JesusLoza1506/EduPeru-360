@@ -7,7 +7,7 @@
         <div class="col-md-3 col-lg-2 bg-success text-white d-flex flex-column align-items-center py-4 shadow-sm" style="min-height: 100vh;">
             <div class="mb-4 text-center">
                 <img src="{{ asset('imagenes/estudiantes.jpg') }}" alt="Foto estudiante" class="rounded-circle shadow" style="width: 80px; height: 80px; object-fit: cover;">
-                <h5 class="mt-3 fw-bold">Bienvenido, Estudiante</h5>
+                <h5 class="mt-3 fw-bold">Bienvenido, {{ Auth::user()->nombre }}</h5>
                 <span class="badge bg-light text-success">EduPerú360</span>
             </div>
             <nav class="nav flex-column w-100">

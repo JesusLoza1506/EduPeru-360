@@ -1,0 +1,85 @@
+/* Estilos modernos para el módulo de matrículas (administrador) */
+.matricula-header {
+    background: linear-gradient(90deg, #d32f2f 40%, #fff 100%);
+    color: #222;
+    border-radius: 14px;
+    padding: 2rem 2rem 1rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(211,47,47,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.matricula-title {
+    font-size: 2.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+.matricula-header p {
+    margin-top: 0.5rem;
+    color: #ffffff;
+    font-size: 1.08rem;
+}
+.btn-matricula {
+    background-color: #d32f2f;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(211,47,47,0.08);
+    transition: background 0.2s;
+}
+.btn-matricula:hover {
+    background-color: #b71c1c;
+    color: #fff;
+}
+.matricula-table th {
+    background-color: #d32f2f;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+}
+.matricula-table td {
+    vertical-align: middle;
+    background-color: #fff;
+    border: none;
+}
+.matricula-table tr {
+    box-shadow: 0 1px 4px rgba(211,47,47,0.04);
+}
+.alert-success {
+    border-radius: 8px;
+    font-weight: 500;
+}
+.badge {
+    font-size: 0.95rem;
+    padding: 0.4em 0.8em;
+    border-radius: 6px;
+}
+.table-responsive {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(211,47,47,0.07);
+}
+.pagination {
+    --bs-pagination-active-bg: #d32f2f;
+    --bs-pagination-active-border-color: #d32f2f;
+}
+.matricula-form {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(211, 47, 47, 0.08);
+    transition: box-shadow 0.2s;
+}
+.matricula-form:hover {
+    box-shadow: 0 8px 32px rgba(211, 47, 47, 0.13);
+}
+.form-label {
+    color: #d32f2f;
+    font-size: 1.08rem;
+}
+.form-select,
+.form-control {
+    border-radius: 8px;
+    font-size: 1rem;
+}

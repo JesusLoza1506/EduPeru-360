@@ -1,0 +1,61 @@
+/* Estilos exclusivos para la solicitud de matrícula de padres */
+
+.matricula-header {
+    background: linear-gradient(90deg, #1976d2 40%, #fff 100%);
+    color: #fff;
+    border-radius: 1rem 1rem 0 0;
+    padding: 1.5rem 2rem;
+    margin-bottom: 0;
+}
+.matricula-title {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.matricula-header p {
+    color: #fff;
+    margin-top: 0.5rem;
+}
+ .btn-primary {
+    background-color: #1976d2;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #115293;
+}
+.matricula-title {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.matricula-title .bi {
+    color: #fff !important;
+    font-size: 2.2rem;
+    vertical-align: middle;
+}
+.card.matricula-form {
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px rgba(25, 118, 210, 0.08);
+    border: none;
+}
+.form-label {
+    color: #1976d2;
+    font-weight: 600;
+}
+input.form-control, select.form-select {
+    border-radius: 0.75rem;
+    border: 1px solid #1976d2;
+}
+input.form-control:focus, select.form-select:focus {
+    border-color: #115293;
+    box-shadow: 0 0 0 0.2rem rgba(25, 118, 210, 0.15);
+}
+.alert-success {
+    background: #e3f2fd;
+    color: #1976d2;
+    border: none;
+    border-radius: 0.75rem;
+}
