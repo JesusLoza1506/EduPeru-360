@@ -15,7 +15,6 @@
     <table class="table matricula-table table-striped table-hover rounded shadow">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Padre</th>
                 <th>Estudiante</th>
                 <th>DNI</th>
@@ -32,7 +31,6 @@
         <tbody>
             @foreach($solicitudes as $solicitud)
             <tr>
-                <td>{{ $solicitud->id }}</td>
                 <td>{{ $solicitud->padre->nombre }} {{ $solicitud->padre->apellido }}</td>
                 <td>{{ $solicitud->nombre_estudiante }} {{ $solicitud->apellido_estudiante }}</td>
                 <td>{{ $solicitud->dni_estudiante }}</td>
@@ -58,7 +56,9 @@
                 </td>
                 <td><span class="badge {{ $solicitud->estado == 'Pendiente' ? 'bg-warning text-dark' : ($solicitud->estado == 'Aprobado' ? 'bg-success' : ($solicitud->estado == 'Rechazado' ? 'bg-danger' : 'bg-secondary')) }}">{{ $solicitud->estado }}</span></td>
                 <td>
-                    <a href="{{ route('solicitudes.show', $solicitud->id) }}" class="btn btn-sm btn-warning">Revisar</a>
+                    <a href="{{ route('solicitudes.show', $solicitud->id) }}" class="btn btn-sm btn-warning">
+                        <span style="font-size:18px; margin-right:4px; vertical-align:middle;">👁️</span>Revisar
+                    </a>
                 </td>
             </tr>
             @endforeach

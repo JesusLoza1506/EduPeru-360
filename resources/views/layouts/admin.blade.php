@@ -21,11 +21,10 @@
                     <span class="badge bg-light text-danger" style="font-size: 0.8rem; padding:0.200em 0.575em;">EduPerú360</span>
                 </div>
                 <nav class="nav flex-column w-100">
-                    <a class="nav-link text-white fw-semibold py-3" href="#"><i class="bi bi-speedometer2 me-2"></i> Dashboard general</a>
+                    <a class="nav-link text-white fw-semibold py-3" href="{{ url('/dashboard/admin') }}"><i class="bi bi-house-door me-2"></i> Dashboard Principal</a>
                     <a class="nav-link text-white fw-semibold py-3" href="{{ route('matriculas.index') }}"><i class="bi bi-mortarboard me-2"></i> Matrícula y estudiantes</a>
                     <a class="nav-link text-white fw-semibold py-3" href="{{ route('solicitudes.index') }}"><i class="bi bi-list-check me-2"></i> Solicitudes de Matrícula</a>
-                    <a class="nav-link text-white fw-semibold py-3" href="#"><i class="bi bi-person-badge me-2"></i> Docentes y usuarios</a>
-                    <a class="nav-link text-white fw-semibold py-3" href="#"><i class="bi bi-building me-2"></i> Grados y cursos</a>
+                    <a class="nav-link text-white fw-semibold py-3" href="{{ route('usuarios.index') }}"><i class="bi bi-person-badge me-2"></i> Docentes y usuarios</a> <a class="nav-link text-white fw-semibold py-3" href="#"><i class="bi bi-building me-2"></i> Grados y cursos</a>
                     <a class="nav-link text-white fw-semibold py-3" href="#"><i class="bi bi-calendar me-2"></i> Año escolar y bimestres</a>
                     <a class="nav-link text-white fw-semibold py-3" href="#"><i class="bi bi-bar-chart-line me-2"></i> Notas y evaluaciones</a>
                     <a class="nav-link text-white fw-semibold py-3" href="#"><i class="bi bi-calendar-check me-2"></i> Asistencia global</a>

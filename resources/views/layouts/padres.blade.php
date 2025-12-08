@@ -21,6 +21,7 @@
                     <span class="badge bg-light text-primary" style="font-size: 0.8rem; padding:0.200em 0.575em;">EduPerú360</span>
                 </div>
                 <nav class="nav flex-column w-100">
+                    <a class="nav-link text-white fw-semibold py-3" href="{{ url('/dashboard/padres') }}"><i class="bi bi-house-door me-2"></i> Dashboard Principal</a>
                     <a class="nav-link text-white fw-semibold py-3" href="#"><i class="bi bi-bar-chart-line me-2"></i> Notas y Promedios</a>
                     <a class="nav-link text-white fw-semibold py-3" href="#"><i class="bi bi-calendar-check me-2"></i> Asistencia</a>
                     <a class="nav-link text-white fw-semibold py-3" href="#"><i class="bi bi-journal-bookmark me-2"></i> Tareas y Materiales</a>

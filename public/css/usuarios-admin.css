@@ -1,0 +1,67 @@
+/* usuarios-admin.css */
+
+.usuarios-header {
+    background: linear-gradient(90deg, #e53935 0%, #e35d5b 100%);
+    color: #fff;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(229,57,53,0.08);
+}
+.usuarios-title {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+}
+.usuarios-table {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(229,57,53,0.08);
+    overflow: hidden;
+}
+.usuarios-table th {
+    background: #e53935;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+}
+.usuarios-table td {
+    vertical-align: middle;
+    border: none;
+}
+.usuarios-table tr {
+    transition: background 0.2s;
+}
+.usuarios-table tr:hover {
+    background: #ffeaea;
+}
+.usuarios-table .badge {
+    font-size: 0.95rem;
+    padding: 0.35em 0.8em;
+    border-radius: 6px;
+}
+.usuarios-table .btn {
+    margin-right: 0.25em;
+    font-size: 0.95rem;
+    padding: 0.35em 0.8em;
+    border-radius: 6px;
+}
+.usuarios-header .btn {
+    font-size: 1rem;
+    padding: 0.5em 1.2em;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(229,57,53,0.08);
+}
+@media (max-width: 900px) {
+    .usuarios-header {
+        padding: 1rem 0.5rem;
+    }
+    .usuarios-title {
+        font-size: 1.3rem;
+    }
+    .usuarios-table th, .usuarios-table td {
+        font-size: 0.95rem;
+    }
+}

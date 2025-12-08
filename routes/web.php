@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Estudiante;
+use App\Http\Controllers\UserController;
 
 // Página principal
 Route::get('/', function () {
@@ -197,3 +198,18 @@ Route::resource('solicitudes', App\Http\Controllers\SolicitudMatriculaController
 
 // Validar solicitud de matrícula (aprobación/rechazo)
 Route::post('/solicitudes/{id}/validar', [App\Http\Controllers\SolicitudMatriculaController::class, 'validar'])->name('solicitudes.validar');
+// Dashboard para admin (protegido)
+Route::get('/dashboard/admin', function () {
+    return view('Dashboards.admin_dashboard');
+})->middleware('auth');
+
+// Rutas para gestión de usuarios y docentes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index');
+    Route::get('/usuarios/create', [UserController::class, 'create'])->name('usuarios.create');
+    Route::post('/usuarios', [UserController::class, 'store'])->name('usuarios.store');
+    Route::get('/usuarios/{id}/edit', [UserController::class, 'edit'])->name('usuarios.edit');
+    Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('usuarios.update');
+    Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('usuarios.destroy');
+    Route::post('/usuarios/{id}/reset-password', [UserController::class, 'resetPassword'])->name('usuarios.resetPassword');
+});
