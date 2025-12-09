@@ -44,14 +44,15 @@ return [
             'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
-            'google' => [
-                'driver' => 'google',
-                'clientId' => env('GOOGLE_DRIVE_CLIENT_ID'),
-                'clientEmail' => env('GOOGLE_DRIVE_CLIENT_EMAIL'),
-                'credentialsPath' => env('GOOGLE_DRIVE_CREDENTIALS_PATH'),
-                'folderId' => env('GOOGLE_DRIVE_FOLDER_ID'),
-            ],
             'report' => false,
+        ],
+
+        'google' => [
+            'driver' => 'google',
+            'clientId' => env('GOOGLE_DRIVE_CLIENT_ID'),
+            'clientEmail' => env('GOOGLE_DRIVE_CLIENT_EMAIL'),
+            'credentialsPath' => env('GOOGLE_DRIVE_CREDENTIALS_PATH'),
+            'folderId' => env('GOOGLE_DRIVE_FOLDER_ID'),
         ],
 
         's3' => [
