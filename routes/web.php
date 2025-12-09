@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Estudiante;
 use App\Http\Controllers\UserController;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 // Página principal
 Route::get('/', function () {
@@ -212,4 +213,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('usuarios.update');
     Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('usuarios.destroy');
     Route::post('/usuarios/{id}/reset-password', [UserController::class, 'resetPassword'])->name('usuarios.resetPassword');
+});
+
+Route::get('/cloud-test', function () {
+    return response()->json(config('cloudinary.cloud'));
 });
