@@ -2,14 +2,14 @@ FROM php:8.2-fpm
 
 # Instala dependencias necesarias para GD y otras extensiones comunes
 RUN apt-get update && \
-    apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev zip unzip git && \
-    docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev libwebp-dev libxpm-dev zip unzip git && \
+    docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp --with-xpm && \
     docker-php-ext-install gd pdo pdo_mysql
 
 # Instala Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copia el código de la apps
+# Copia el código de la app
 WORKDIR /var/www/html
 COPY . .
 
@@ -18,7 +18,6 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 # Da permisos a storage y bootstrap/cache
 RUN chown -R www-data:www-data storage bootstrap/cache
-
 
 # Expone el puerto 8080 (o el que Railway defina)
 EXPOSE 8080
