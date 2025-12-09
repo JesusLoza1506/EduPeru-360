@@ -13,6 +13,9 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 COPY . .
 
+# Instala dependencias de Laravel
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
 # Da permisos a storage y bootstrap/cache
 RUN chown -R www-data:www-data storage bootstrap/cache
 
