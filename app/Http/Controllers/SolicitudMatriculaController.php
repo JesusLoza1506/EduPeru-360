@@ -1,4 +1,3 @@
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 <?php
 
 namespace App\Http\Controllers;
@@ -13,7 +12,7 @@ use App\Models\Estudiante;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-// Mostrar detalle de solicitud para revisión
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class SolicitudMatriculaController extends Controller
 {
