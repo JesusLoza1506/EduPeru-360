@@ -12,7 +12,8 @@ use App\Models\Estudiante;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Cloudinary\Api\Upload\UploadApi;
+use Cloudinary\Cloudinary;
 
 class SolicitudMatriculaController extends Controller
 {
@@ -74,11 +75,13 @@ class SolicitudMatriculaController extends Controller
         $comprobanteYapeUrl = null;
         if ($request->hasFile('comprobante_yape')) {
             $file = $request->file('comprobante_yape');
-            // Subir a Cloudinary y obtener la URL segura
-            $uploadedFile = Cloudinary::upload($file->getRealPath(), [
-                'folder' => 'comprobantes_yape'
+            $result = (new UploadApi())->upload($file->getRealPath(), [
+                'folder' => 'comprobantes_yape',
+                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+                'api_key'    => env('CLOUDINARY_API_KEY'),
+                'api_secret' => env('CLOUDINARY_API_SECRET'),
             ]);
-            $comprobanteYapeUrl = $uploadedFile->getSecurePath();
+            $comprobanteYapeUrl = $result['secure_url'] ?? null;
         }
 
         SolicitudMatricula::create([
@@ -123,10 +126,13 @@ class SolicitudMatriculaController extends Controller
         $comprobanteYapeUrl = $solicitud->comprobante_yape;
         if ($request->hasFile('comprobante_yape')) {
             $file = $request->file('comprobante_yape');
-            $uploadedFile = Cloudinary::upload($file->getRealPath(), [
-                'folder' => 'comprobantes_yape'
+            $result = (new UploadApi())->upload($file->getRealPath(), [
+                'folder' => 'comprobantes_yape',
+                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+                'api_key'    => env('CLOUDINARY_API_KEY'),
+                'api_secret' => env('CLOUDINARY_API_SECRET'),
             ]);
-            $comprobanteYapeUrl = $uploadedFile->getSecurePath();
+            $comprobanteYapeUrl = $result['secure_url'] ?? null;
         }
 
         $solicitud->update([
