@@ -211,9 +211,21 @@ class SolicitudMatriculaController extends Controller
             'estudiante' => $estudiante,
             'userEstudiante' => $userEstudiante,
         ]);
-        $pdfPath = 'fichas_matricula/matricula_' . $matricula->id . '.pdf';
-        Storage::disk('public')->put($pdfPath, $pdf->output());
-        $matricula->update(['ficha_pdf' => $pdfPath]);
+        $pdfTempPath = sys_get_temp_dir() . '/matricula_' . $matricula->id . '_' . uniqid() . '.pdf';
+        file_put_contents($pdfTempPath, $pdf->output());
+        $cloudinary = new \Cloudinary\Cloudinary([
+            'cloud' => [
+                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+                'api_key'    => env('CLOUDINARY_API_KEY'),
+                'api_secret' => env('CLOUDINARY_API_SECRET'),
+            ],
+        ]);
+        $result = $cloudinary->uploadApi()->upload($pdfTempPath, [
+            'folder' => 'fichas_matricula',
+            'resource_type' => 'auto',
+        ]);
+        unlink($pdfTempPath);
+        $matricula->update(['ficha_pdf' => $result['secure_url'] ?? null]);
 
         // Relacionar padre con usuario estudiante
         $padreId = $solicitud->padre_id;
