@@ -40,8 +40,8 @@
                 <td>S/. {{ number_format($solicitud->monto_mensualidad,2) }}</td>
                 <td>
                     @if($solicitud->comprobante_yape)
-                    <a href="{{ asset('storage/' . $solicitud->comprobante_yape) }}" target="_blank">
-                        <img src="{{ asset('storage/' . $solicitud->comprobante_yape) }}" alt="Comprobante Yape" style="max-width:60px; max-height:60px; border-radius:6px; border:1px solid #ccc;">
+                    <a href="https://drive.google.com/uc?id={{ $solicitud->comprobante_yape }}" target="_blank">
+                        <img src="https://drive.google.com/uc?id={{ $solicitud->comprobante_yape }}" alt="Comprobante Yape" style="max-width:60px; max-height:60px; border-radius:6px; border:1px solid #ccc;">
                     </a>
                     @else
                     <span class="text-muted">No adjunto</span>

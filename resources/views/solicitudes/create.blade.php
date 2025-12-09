@@ -44,8 +44,8 @@
                         <span class="badge {{ $sol->estado == 'Aprobado' ? 'bg-success' : ($sol->estado == 'Rechazado' ? 'bg-danger' : 'bg-warning text-dark') }}">{{ $sol->estado }}</span>
                     </td>
                     <td>
-                        @if($sol->estado == 'Aprobado' && $sol->matricula && $sol->matricula->ficha_pdf)
-                        <a href="{{ asset('storage/' . $sol->matricula->ficha_pdf) }}" target="_blank" class="btn btn-sm btn-primary">Ver PDF</a>
+                        @if($sol->comprobante_yape)
+                        <a href="https://drive.google.com/uc?id={{ $sol->comprobante_yape }}" target="_blank" class="btn btn-sm btn-primary">Ver Comprobante</a>
                         @else
                         <span class="text-muted">No disponible</span>
                         @endif

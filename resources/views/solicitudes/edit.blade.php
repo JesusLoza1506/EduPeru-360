@@ -66,7 +66,7 @@
             @if($solicitud->comprobante_yape)
             <div class="mt-2">
                 <span class="fw-semibold">Comprobante actual:</span><br>
-                <img src="{{ asset('storage/' . $solicitud->comprobante_yape) }}" alt="Comprobante Yape" style="max-width:120px; border-radius:8px; border:1px solid #0d6efd;">
+                <img src="https://drive.google.com/uc?id={{ $solicitud->comprobante_yape }}" alt="Comprobante Yape" style="max-width:120px; border-radius:8px; border:1px solid #0d6efd;">
             </div>
             @endif
         </div>
