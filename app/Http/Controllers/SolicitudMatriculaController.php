@@ -1,3 +1,4 @@
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 <?php
 
 namespace App\Http\Controllers;
@@ -75,7 +76,9 @@ class SolicitudMatriculaController extends Controller
         if ($request->hasFile('comprobante_yape')) {
             $file = $request->file('comprobante_yape');
             // Subir a Cloudinary y obtener la URL segura
-            $uploadedFile = $file->storeOnCloudinary('comprobantes_yape');
+            $uploadedFile = Cloudinary::upload($file->getRealPath(), [
+                'folder' => 'comprobantes_yape'
+            ]);
             $comprobanteYapeUrl = $uploadedFile->getSecurePath();
         }
 
@@ -121,7 +124,9 @@ class SolicitudMatriculaController extends Controller
         $comprobanteYapeUrl = $solicitud->comprobante_yape;
         if ($request->hasFile('comprobante_yape')) {
             $file = $request->file('comprobante_yape');
-            $uploadedFile = $file->storeOnCloudinary('comprobantes_yape');
+            $uploadedFile = Cloudinary::upload($file->getRealPath(), [
+                'folder' => 'comprobantes_yape'
+            ]);
             $comprobanteYapeUrl = $uploadedFile->getSecurePath();
         }
 
