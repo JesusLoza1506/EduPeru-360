@@ -75,11 +75,15 @@ class SolicitudMatriculaController extends Controller
         $comprobanteYapeUrl = null;
         if ($request->hasFile('comprobante_yape')) {
             $file = $request->file('comprobante_yape');
-            $result = (new UploadApi())->upload($file->getRealPath(), [
+            $cloudinary = new Cloudinary([
+                'cloud' => [
+                    'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+                    'api_key'    => env('CLOUDINARY_API_KEY'),
+                    'api_secret' => env('CLOUDINARY_API_SECRET'),
+                ],
+            ]);
+            $result = $cloudinary->uploadApi()->upload($file->getRealPath(), [
                 'folder' => 'comprobantes_yape',
-                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
-                'api_key'    => env('CLOUDINARY_API_KEY'),
-                'api_secret' => env('CLOUDINARY_API_SECRET'),
             ]);
             $comprobanteYapeUrl = $result['secure_url'] ?? null;
         }
