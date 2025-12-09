@@ -59,9 +59,6 @@ class SolicitudMatriculaController extends Controller
     // Guardar nueva solicitud
     public function store(Request $request)
     {
-        // Depuración: mostrar el valor real de CLOUDINARY_API_SECRET
-        dd(env('CLOUDINARY_API_SECRET'));
-
         $request->validate([
             'nombre_estudiante' => 'required|string|max:100',
             'apellido_estudiante' => 'required|string|max:100',
