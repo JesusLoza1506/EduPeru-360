@@ -12,9 +12,6 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         // Registrar Google Drive ServiceProvider si existe
-        if (class_exists(\Masbug\Flysystem\GoogleDrive\GoogleDriveServiceProvider::class)) {
-            $this->app->register(\Masbug\Flysystem\GoogleDrive\GoogleDriveServiceProvider::class);
-        }
     }
 
     /**

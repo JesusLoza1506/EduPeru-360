@@ -70,14 +70,13 @@ class SolicitudMatriculaController extends Controller
             'nro_operacion_yape' => 'required|string|max:50',
         ]);
 
-        // Guardar el archivo de comprobante Yape en Google Drive
-        $comprobanteYapeId = null;
+        // Guardar el archivo de comprobante Yape en Cloudinary
+        $comprobanteYapeUrl = null;
         if ($request->hasFile('comprobante_yape')) {
             $file = $request->file('comprobante_yape');
-            $fileName = uniqid() . '_' . $file->getClientOriginalName();
-            $googleFile = Storage::disk('google')->putFileAs('', $file, $fileName);
-            // putFileAs retorna el nombre del archivo en Drive
-            $comprobanteYapeId = $googleFile;
+            // Subir a Cloudinary y obtener la URL segura
+            $uploadedFile = $file->storeOnCloudinary('comprobantes_yape');
+            $comprobanteYapeUrl = $uploadedFile->getSecurePath();
         }
 
         SolicitudMatricula::create([
@@ -90,7 +89,7 @@ class SolicitudMatriculaController extends Controller
             'fecha_solicitud' => now(),
             'monto_matricula' => $request->monto_matricula,
             'monto_mensualidad' => $request->monto_mensualidad,
-            'comprobante_yape' => $comprobanteYapeId, // Guardamos el nombre/id en Drive
+            'comprobante_yape' => $comprobanteYapeUrl, // Guardamos la URL de Cloudinary
             'nro_operacion_yape' => $request->nro_operacion_yape,
             'estado' => 'Pendiente',
         ]);
@@ -118,13 +117,12 @@ class SolicitudMatriculaController extends Controller
             'comprobante_yape' => 'nullable|file|mimes:jpg,jpeg,png|max:5120',
         ]);
 
-        // Si se sube nuevo comprobante, reemplazar en Google Drive
-        $comprobanteYapeId = $solicitud->comprobante_yape;
+        // Si se sube nuevo comprobante, reemplazar en Cloudinary
+        $comprobanteYapeUrl = $solicitud->comprobante_yape;
         if ($request->hasFile('comprobante_yape')) {
             $file = $request->file('comprobante_yape');
-            $fileName = uniqid() . '_' . $file->getClientOriginalName();
-            $googleFile = Storage::disk('google')->putFileAs('', $file, $fileName);
-            $comprobanteYapeId = $googleFile;
+            $uploadedFile = $file->storeOnCloudinary('comprobantes_yape');
+            $comprobanteYapeUrl = $uploadedFile->getSecurePath();
         }
 
         $solicitud->update([
@@ -136,7 +134,7 @@ class SolicitudMatriculaController extends Controller
             'monto_matricula' => $request->monto_matricula,
             'monto_mensualidad' => $request->monto_mensualidad,
             'nro_operacion_yape' => $request->nro_operacion_yape,
-            'comprobante_yape' => $comprobanteYapeId,
+            'comprobante_yape' => $comprobanteYapeUrl,
         ]);
         return redirect()->route('solicitudes.create')->with('success', 'Solicitud actualizada correctamente.');
     }

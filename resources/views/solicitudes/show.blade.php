@@ -14,11 +14,11 @@
         <div class="col-md-4 text-center">
             <h5 class="fw-bold">Comprobante Yape</h5>
             @if($solicitud->comprobante_yape)
-            <a href="https://drive.google.com/uc?id={{ $solicitud->comprobante_yape }}" target="_blank">
-                <img src="https://drive.google.com/uc?id={{ $solicitud->comprobante_yape }}" alt="Comprobante Yape" style="max-width: 220px; border-radius: 10px; border: 2px solid #0d6efd;">
+            <a href="{{ $solicitud->comprobante_yape }}" target="_blank">
+                <img src="{{ $solicitud->comprobante_yape }}" alt="Comprobante Yape" style="max-width: 220px; border-radius: 10px; border: 2px solid #0d6efd;">
             </a>
             @else
-            <span class="text-muted">No adjunto</span>
+            <span class="text-muted">No adjuntado</span>
             @endif
             <div class="mt-3">
                 <span class="fw-semibold">N° Operación Yape:</span> {{ $solicitud->nro_operacion_yape ?? '-' }}

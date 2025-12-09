@@ -45,7 +45,7 @@
                     </td>
                     <td>
                         @if($sol->comprobante_yape)
-                        <a href="https://drive.google.com/uc?id={{ $sol->comprobante_yape }}" target="_blank" class="btn btn-sm btn-primary">Ver Comprobante</a>
+                        <a href="{{ $sol->comprobante_yape }}" target="_blank" class="btn btn-sm btn-primary">Ver Comprobante</a>
                         @else
                         <span class="text-muted">No disponible</span>
                         @endif
