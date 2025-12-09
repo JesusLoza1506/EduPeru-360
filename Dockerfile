@@ -20,11 +20,11 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 RUN chown -R www-data:www-data storage bootstrap/cache
 
 
-# Expone el puerto 8000 (Laravel serve)
-EXPOSE 8000
+# Expone el puerto 8080 (o el que Railway defina)
+EXPOSE 8080
 
 CMD php artisan config:cache && \
     php artisan route:cache && \
     php artisan view:cache && \
     php artisan migrate --force && \
-    php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
+    php artisan serve --host=0.0.0.0 --port=${PORT:-8080}
