@@ -9,7 +9,7 @@ RUN apt-get update && \
 # Instala Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copia el código de la app
+# Copia el código de la apps
 WORKDIR /var/www/html
 COPY . .
 
