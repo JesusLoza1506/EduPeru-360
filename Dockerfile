@@ -19,7 +19,12 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 # Da permisos a storage y bootstrap/cache
 RUN chown -R www-data:www-data storage bootstrap/cache
 
-# Expone el puerto 9000 (por defecto en php-fpm)
-EXPOSE 9000
 
-CMD ["php-fpm"]
+# Expone el puerto 8000 (Laravel serve)
+EXPOSE 8000
+
+CMD php artisan config:cache && \
+    php artisan route:cache && \
+    php artisan view:cache && \
+    php artisan migrate --force && \
+    php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
