@@ -39,6 +39,18 @@ Route::post('/login/padres', function (Illuminate\Http\Request $request) {
     }
 });
 
+// Logout para padres
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login/padres');
+})->name('logout');
+
+// Logout para administración
+Route::post('/logout/admin', function () {
+    Auth::logout();
+    return redirect('/login/administracion');
+})->name('logout.admin');
+
 // Dashboard para padres (protegido y dinámico)
 Route::get('/dashboard/padres', function () {
     $padre = Auth::user();
@@ -147,23 +159,23 @@ Route::post('/login/docentes', function (Illuminate\Http\Request $request) {
 // Login para administración (GET)
 Route::get('/login/administracion', function () {
     return view('/Logins/login_administracion');
-});
+})->name('login');
 
 // Login para administración (POST)
 Route::post('/login/admin', function (Illuminate\Http\Request $request) {
     $usuario = $request->input('usuario');
     $password = $request->input('password');
 
-    $admin = DB::table('users')
-        ->where(function ($query) use ($usuario) {
-            $query->where('dni', $usuario)
-                ->orWhere('email', $usuario);
-        })
+    $admin = User::where(function ($query) use ($usuario) {
+        $query->where('dni', $usuario)
+            ->orWhere('email', $usuario);
+    })
         ->where('rol', 'Administrador General')
         ->first();
 
     if ($admin && Hash::check($password, $admin->password)) {
-        return view('/Dashboards/admin_dashboard');
+        Auth::login($admin); // Autentica al administrador
+        return redirect('/dashboard/admin'); // Redirige al dashboard de admin
     } else {
         return redirect('/login/administracion')->withErrors(['usuario' => 'Usuario/DNI o contraseña incorrectos'])->withInput();
     }
@@ -214,7 +226,17 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('usuarios.destroy');
     Route::post('/usuarios/{id}/reset-password', [UserController::class, 'resetPassword'])->name('usuarios.resetPassword');
 });
+// Vista de selección para el módulo 'Grados y cursos'
+Route::get('/grados-cursos', function () {
+    return view('grados.modulo');
+})->name('grados.modulo');
 
-Route::get('/cloud-test', function () {
-    return response()->json(config('cloudinary.cloud'));
+// CRUD de grados
+Route::resource('grados', App\Http\Controllers\GradoController::class);
+// CRUD de materias (cursos)
+Route::resource('materias', App\Http\Controllers\CursoController::class);
+
+// CRUD de asignaciones de cursos a docentes
+Route::middleware(['auth'])->group(function () {
+    Route::resource('asignaciones', App\Http\Controllers\AsignacionCursoController::class);
 });

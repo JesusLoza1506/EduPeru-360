@@ -91,5 +91,12 @@
         </tbody>
     </table>
 </div>
-{{ $usuarios->links() }}
+<div class="d-flex justify-content-center mt-4">
+    <span>
+        Mostrando <b>{{ $usuarios->firstItem() }}</b> a <b>{{ $usuarios->lastItem() }}</b> de <b>{{ $usuarios->total() }}</b> resultados
+    </span>
+    <div class="ms-3">
+        {{ $usuarios->onEachSide(1)->links('pagination::bootstrap-5') }}
+    </div>
+</div>
 @endsection

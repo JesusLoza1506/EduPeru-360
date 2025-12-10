@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class AsignacionCurso extends Model
 {
     protected $table = 'asignacion_cursos';
+    public $timestamps = false;
 
     protected $fillable = [
         'curso_id',

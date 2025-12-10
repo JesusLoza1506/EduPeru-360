@@ -19,6 +19,15 @@
                     <img src="{{ asset('imagenes/padre.jpg') }}" alt="Foto padre" class="rounded-circle shadow" style="width: 80px; height: 80px; object-fit: cover;">
                     <h5 class="mt-3 fw-bold">Bienvenido, {{ Auth::user()->nombre }}</h5>
                     <span class="badge bg-light text-primary" style="font-size: 0.8rem; padding:0.200em 0.575em;">EduPerú360</span>
+                    <div class="mt-3">
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn w-100 fw-bold py-2"
+                                style="background: #fff; color: #2563eb; border: 2px solid #2563eb; border-radius: 8px; font-weight: bold; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: background 0.3s;">
+                                <i class="bi bi-box-arrow-right me-2"></i> Cerrar sesión
+                            </button>
+                        </form>
+                    </div>
                 </div>
                 <nav class="nav flex-column w-100">
                     <a class="nav-link text-white fw-semibold py-3" href="{{ url('/dashboard/padres') }}"><i class="bi bi-house-door me-2"></i> Dashboard Principal</a>
